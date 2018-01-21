@@ -18,20 +18,25 @@ const productionPlugins = [
   new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.optimize.CommonsChunkPlugin(
     {
-      names: ['index', 'about', 'vendor'],
-      chunks: ['index', 'about'],
+      names: Object.keys(pages).concat('vendor'),
+      chunks: Object.keys(pages),
       minChunks: Infinity
     }
   ),
   new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('production') })
 ]
 
+const pageEntries = Object.keys(pages).reduce((acc, cur) => {
+  const newAcc = acc
+  newAcc[cur] = `./src/scripts/${cur}.js`
+  return newAcc
+}, {})
+
 export default {
   devtool: isDev && 'source-map' || false,
 
   entry: {
-    index: './src/scripts/index.js',
-    about: './src/scripts/about.js',
+    pageEntries,
     vendor: ['jquery']
   },
 

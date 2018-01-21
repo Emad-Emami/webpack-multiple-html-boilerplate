@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'iransans';
+  src: url('../fonts/persian/iransans/IRANSans-web.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/persian/iransans/IRANSans-web.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+          url('../fonts/persian/iransans/IRANSans-web.woff2') format('woff2'), /* Super Modern Browsers */
+          url('../fonts/persian/iransans/IRANSans-web.woff') format('woff'), /* Pretty Modern Browsers */
+          url('../fonts/persian/iransans/IRANSans-web.ttf')  format('truetype'); /* Safari, Android, iOS */
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'iransans';
+  src: url('../fonts/persian/iransans/IRANSans-Medium-web.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/persian/iransans/IRANSans-Medium-web.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+          url('../fonts/persian/iransans/IRANSans-Medium-web.woff2') format('woff2'), /* Super Modern Browsers */
+          url('../fonts/persian/iransans/IRANSans-Medium-web.woff') format('woff'), /* Pretty Modern Browsers */
+          url('../fonts/persian/iransans/IRANSans-Medium-web.ttf')  format('truetype'); /* Safari, Android, iOS */
+  font-weight: bold;
+}
+
+body {
+  font-family: "iransans";
+  color: #505050;
+}
+

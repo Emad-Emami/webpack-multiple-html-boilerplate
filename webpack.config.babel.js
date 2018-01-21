@@ -30,8 +30,8 @@ export default {
   devtool: isDev && 'source-map' || false,
 
   entry: {
-    index: './assets/scripts/index.js',
-    about: './assets/scripts/about.js',
+    index: './src/scripts/index.js',
+    about: './src/scripts/about.js',
     vendor: ['jquery']
   },
 
@@ -44,9 +44,10 @@ export default {
   plugins: Object.keys(pages).map((id) =>
     new HtmlPlugin({
       chunks: ['vendor', id],
-      template: `assets/${id}.html`,
+      template: `src/${id}.html`,
       filename: `${id}.html`,
-      title: pages[id]
+      title: pages[id],
+      favicon: './src/images/favicon.ico'
     })
   ).concat([
     new webpack.ProvidePlugin({
@@ -64,7 +65,7 @@ export default {
       {
         test: /\.js$/,
         use: 'babel-loader',
-        include: path.join(__dirname, 'assets')
+        include: path.join(__dirname, 'src')
       },
       {
         test: /\.(css|scss)$/,

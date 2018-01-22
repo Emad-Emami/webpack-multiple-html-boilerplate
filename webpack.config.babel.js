@@ -16,13 +16,11 @@ const isDev = !isProd
 const productionPlugins = [
   new UglifyJSPlugin(),
   new webpack.optimize.OccurrenceOrderPlugin(),
-  new webpack.optimize.CommonsChunkPlugin(
-    {
-      names: Object.keys(pages).concat('vendor'),
-      chunks: Object.keys(pages),
-      minChunks: Infinity
-    }
-  ),
+  new webpack.optimize.CommonsChunkPlugin({
+    names: Object.keys(pages).concat('vendor'),
+    chunks: Object.keys(pages),
+    minChunks: Infinity
+  }),
   new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('production') })
 ]
 
@@ -34,28 +32,27 @@ const pageEntries = Object.keys(pages).reduce((acc, cur) => {
 
 
 export default {
-  devtool: isDev && 'source-map' || false,
+  devtool: isDev ? 'source-map' : false,
 
   entry: {
     ...pageEntries,
     vendor: ['jquery']
   },
-
+  
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'js/[name].js',
     publicPath: '/'
   },
 
-  plugins: Object.keys(pages).map((id) =>
+  plugins: Object.keys(pages).map(id =>
     new HtmlPlugin({
       chunks: ['vendor', id],
       template: `src/${id}.html`,
       filename: `${id}.html`,
       title: pages[id],
       favicon: './src/images/favicon.ico'
-    })
-  ).concat([
+    })).concat([
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'

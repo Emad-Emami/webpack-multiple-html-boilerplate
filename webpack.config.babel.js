@@ -32,11 +32,12 @@ const pageEntries = Object.keys(pages).reduce((acc, cur) => {
   return newAcc
 }, {})
 
+
 export default {
   devtool: isDev && 'source-map' || false,
 
   entry: {
-    pageEntries,
+    ...pageEntries,
     vendor: ['jquery']
   },
 
